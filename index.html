@@ -1,1 +1,607 @@
-<h1>Badar tagar</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Badar Uddin Tagar — Backend Developer (.NET / Go / DX)</title>
+<meta name="description" content="Senior ASP.NET Core Developer & ERP Specialist. Backend systems, REST APIs, and developer documentation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1a1d23;
+    --bg-raised: #21252c;
+    --text: #e8e6e1;
+    --text-dim: #8b9099;
+    --accent: #7ec9a3;
+    --accent-dim: #4f8a6f;
+    --link: #7aa2f7;
+    --line: #343942;
+    --mono: 'JetBrains Mono', monospace;
+    --body: 'Inter', sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  /* ---------- Header / terminal block ---------- */
+  .term{
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .term-bar{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dot{ width:11px; height:11px; border-radius:50%; }
+  .dot.red{ background:#e0796d; }
+  .dot.yellow{ background:#e0bf6d; }
+  .dot.green{ background:#7ec9a3; }
+
+  .term-title{
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .term-body{
+    padding: 28px 28px 32px;
+    font-family: var(--mono);
+  }
+
+  .prompt{
+    color: var(--accent);
+    font-size: 13px;
+  }
+  .prompt .path{ color: var(--link); }
+  .prompt .cmd{ color: var(--text); }
+
+  h1{
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: clamp(28px, 6vw, 42px);
+    letter-spacing: -0.02em;
+    margin: 14px 0 6px;
+    color: var(--text);
+  }
+
+  .role{
+    font-family: var(--mono);
+    font-size: 15px;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .role::before{ content: "> "; color: var(--text-dim); }
+
+  .cursor{
+    display:inline-block;
+    width: 9px;
+    height: 18px;
+    background: var(--accent);
+    margin-left: 6px;
+    vertical-align: -3px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 14px 22px;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 18px;
+    font-family: var(--body);
+  }
+  .meta a{ color: var(--link); text-decoration:none; }
+  .meta a:hover{ text-decoration: underline; }
+  .meta span{ display:inline-flex; align-items:center; gap:6px; }
+
+  /* ---------- Section structure ---------- */
+  section{ margin-bottom: 44px; }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .section-head .tag{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent-dim);
+    background: rgba(126,201,163,0.08);
+    border: 1px solid rgba(126,201,163,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-head h2{
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- About ---------- */
+  .about p{
+    color: var(--text);
+    margin-bottom: 12px;
+    max-width: 64ch;
+  }
+  .about ul{
+    list-style:none;
+    margin-top: 14px;
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+  }
+  .about li{
+    position:relative;
+    padding-left: 22px;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .about li::before{
+    content: "›";
+    position:absolute;
+    left:0;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-weight:700;
+  }
+
+  /* ---------- Experience ---------- */
+  .job{
+    border-left: 2px solid var(--line);
+    padding: 2px 0 2px 22px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .job::before{
+    content:"";
+    position:absolute;
+    left:-5px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+  .job:last-child{ margin-bottom: 0; }
+
+  .job-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    justify-content:space-between;
+    gap: 6px 16px;
+  }
+
+  .job-title{
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+  }
+
+  .job-dates{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space:nowrap;
+  }
+
+  .job-company{
+    font-size: 14px;
+    color: var(--accent);
+    margin: 2px 0 10px;
+  }
+  .job-company .loc{ color: var(--text-dim); }
+
+  .job-summary{
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    max-width: 62ch;
+  }
+
+  .job ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .job li{
+    position:relative;
+    padding-left: 20px;
+    font-size: 14.5px;
+    color: var(--text);
+  }
+  .job li::before{
+    content: "+";
+    position:absolute;
+    left:0;
+    color: var(--accent-dim);
+    font-family: var(--mono);
+    font-weight:700;
+  }
+
+  .stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .stack span{
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-dim);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 3px 8px;
+    background: var(--bg-raised);
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .skill-group h3{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .skill-group .stack span{ font-size: 12.5px; padding: 4px 10px; }
+
+  /* ---------- Education / Certs / Languages ---------- */
+  .edu-item{ margin-bottom: 16px; }
+  .edu-item:last-child{ margin-bottom: 0; }
+  .edu-degree{ font-family: var(--mono); font-weight:700; font-size:15px; }
+  .edu-school{ color: var(--accent); font-size: 14px; margin-top: 2px; }
+  .edu-date{ color: var(--text-dim); font-size: 12.5px; font-family: var(--mono); margin-top: 2px; }
+
+  .grid-two{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 640px){
+    .grid-two{ grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .cert-list, .lang-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+  .cert-list li, .lang-list li{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap: 12px;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 8px;
+  }
+  .cert-list .cert-name{ color: var(--text); }
+  .cert-list .cert-meta{ color: var(--text-dim); font-family: var(--mono); font-size: 12px; white-space:nowrap; }
+  .lang-list .lang-name{ color: var(--text); font-family: var(--mono); }
+  .lang-list .lang-level{ color: var(--text-dim); font-size: 12.5px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap: 10px;
+  }
+  footer a{ color: var(--link); text-decoration:none; }
+  footer a:hover{ text-decoration: underline; }
+
+  /* focus visibility */
+  a:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="term">
+    <div class="term-bar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="term-title">badar@hyderabad — resume.sh</span>
+    </div>
+    <div class="term-body">
+      <div class="prompt"><span class="cmd">$</span> whoami</div>
+      <h1>Badar Uddin Tagar<span class="cursor" aria-hidden="true"></span></h1>
+      <div class="role">Senior ASP.NET Core Developer &amp; ERP Specialist — backend for .NET, Go &amp; DX</div>
+      <div class="meta">
+        <span>📍 Hyderabad, Sindh, Pakistan · Remote</span>
+        <span><a href="https://github.com/genbadar" target="_blank" rel="noopener">github.com/genbadar</a></span>
+        <span><a href="https://www.linkedin.com/in/badar-uddin-tagar-10564a52/" target="_blank" rel="noopener">LinkedIn</a></span>
+        <span><a href="https://www.youtube.com/@BadarBizOps" target="_blank" rel="noopener">YouTube · Badar BizOps</a></span>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <div class="section-head">
+      <span class="tag">about</span>
+      <h2>Profile</h2>
+    </div>
+    <p>
+      Backend developer with 12+ years building ERP-style systems — Accounting, Sales, and Inventory modules —
+      on ASP.NET Core and the .NET stack. Focused on REST APIs, clean architecture, secure authentication,
+      and SQL Server performance. Currently expanding into Go for systems work and open-source contribution,
+      and into technical writing / API documentation as a developer-experience specialty.
+    </p>
+    <ul>
+      <li>ASP.NET Core backend developer focused on ERP-style systems (Accounting, Sales, Inventory)</li>
+      <li>Built and maintained RESTful APIs for invoicing, payments, and inventory workflows</li>
+      <li>Implemented authentication and role-based authorization using ASP.NET Core Identity / JWT</li>
+      <li>Designed and optimized SQL Server databases with queries, stored procedures, and indexing</li>
+      <li>Applied clean architecture principles for scalable and maintainable backend systems</li>
+      <li>Developed reporting and dashboard APIs for real-time business insights</li>
+      <li>Improved legacy ERP workflows for performance, reliability, and data consistency</li>
+      <li>Publishes public GitHub repositories showcasing ASP.NET Core and Go practice projects</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <span class="tag">experience</span>
+      <h2>Work history</h2>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">ERP Module Specialist (Accounting, Sales, Inventory)</span>
+        <span class="job-dates">Jan 2024 — Present · 2 yrs 6 mos</span>
+      </div>
+      <div class="job-company">Freelancer · Freelance <span class="loc">— Hyderabad, Sindh, Pakistan · Remote</span></div>
+      <p class="job-summary">
+        Design, develop, and maintain ERP modules for Accounting, Sales, and Inventory — delivering
+        automated, data-driven business systems for SMEs and mid-sized companies, focused on scalable,
+        maintainable, high-performance workflows.
+      </p>
+      <ul>
+        <li>Develop and maintain ERP modules using ASP.NET Core for accounting, sales, and inventory management</li>
+        <li>Implement transaction workflows including invoicing, payments, stock adjustments, and sales order management</li>
+        <li>Automate repetitive business processes, improving operational efficiency and reducing errors</li>
+        <li>Integrate ERP modules with REST APIs for third-party services, financial systems, and internal tools</li>
+        <li>Design secure authentication and role-based access control for multi-user ERP applications</li>
+        <li>Optimize SQL Server performance — queries, stored procedures, and indexing for high-volume transactions</li>
+        <li>Build dashboards and reporting interfaces for real-time insight into sales, inventory, and financials</li>
+        <li>Refactor and maintain modular backend components for long-term maintainability and scalability</li>
+      </ul>
+      <div class="stack">
+        <span>C#</span><span>ASP.NET Core</span><span>ASP.NET MVC</span><span>.NET</span>
+        <span>SQL Server</span><span>T-SQL</span><span>REST APIs</span><span>Payment Gateways</span>
+        <span>HTML/CSS</span><span>Bootstrap</span><span>jQuery</span><span>AJAX</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">ASP.NET Developer</span>
+        <span class="job-dates">Feb 2023 — Nov 2023 · 10 mos</span>
+      </div>
+      <div class="job-company">AppsXone IT Solutions · Full-time <span class="loc">— Hyderabad City Tehsil, Sindh, Pakistan · On-site</span></div>
+      <p class="job-summary">
+        Mid-level ASP.NET developer delivering full-stack web applications and business systems with C#
+        and Microsoft technologies — scalable, maintainable, data-driven solutions for SMEs and internal
+        business processes.
+      </p>
+      <ul>
+        <li>Developed and maintained web applications using ASP.NET MVC and WebForms (C#)</li>
+        <li>Built reusable modules for business workflows, eCommerce logic, and admin dashboards</li>
+        <li>Designed and optimized SQL Server databases — complex queries, stored procedures, indexing</li>
+        <li>Implemented authentication, authorization, and role-based access control for multi-user systems</li>
+        <li>Integrated and consumed RESTful APIs and payment gateways</li>
+        <li>Created responsive, interactive UI components with HTML, CSS, Bootstrap, and jQuery</li>
+        <li>Reviewed and refactored existing systems for performance, maintainability, and scalability</li>
+      </ul>
+      <div class="stack">
+        <span>C#</span><span>ASP.NET MVC</span><span>ASP.NET WebForms</span><span>.NET</span>
+        <span>SQL Server</span><span>REST APIs</span><span>Payment Gateways</span><span>jQuery</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">ASP.NET Developer</span>
+        <span class="job-dates">Mar 2018 — Nov 2022 · 4 yrs 9 mos</span>
+      </div>
+      <div class="job-company">Basecamp Data Solution · Full-time <span class="loc">— Hyderabad District, Sindh, Pakistan · On-site</span></div>
+      <p class="job-summary">
+        Backend-focused web developer delivering business applications and transactional systems with
+        Microsoft technologies — structured, scalable solutions for small and mid-sized organizations,
+        with emphasis on maintainability and performance.
+      </p>
+      <ul>
+        <li>Engineered web applications using ASP.NET MVC and WebForms (C#) with layered architecture</li>
+        <li>Developed reusable components and modular business logic in C# (.NET Framework / .NET Core)</li>
+        <li>Designed and maintained SQL Server databases — tables, relationships, stored procedures, indexing</li>
+        <li>Built and optimized data-driven workflows: order processing, user management, reporting modules</li>
+        <li>Implemented secure authentication, role-based authorization, and session control</li>
+        <li>Developed and integrated RESTful services for external systems and internal modules</li>
+        <li>Maintained clean separation of concerns (UI, business logic, data access) for long-term scalability</li>
+      </ul>
+      <div class="stack">
+        <span>C#</span><span>ASP.NET MVC</span><span>ASP.NET WebForms</span><span>.NET</span>
+        <span>SQL Server</span><span>REST APIs</span><span>HTML/CSS</span><span>Bootstrap</span><span>jQuery</span><span>AJAX</span>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">ASP.NET Developer</span>
+        <span class="job-dates">Mar 2014 — Dec 2017 · 3 yrs 10 mos</span>
+      </div>
+      <div class="job-company">Matrix Systems · Full-time <span class="loc">— Hyderabad District, Sindh, Pakistan · On-site</span></div>
+      <p class="job-summary">
+        Full-stack developer building web applications and business systems with Microsoft technologies —
+        structured, data-driven solutions for small and mid-sized businesses.
+      </p>
+      <ul>
+        <li>Developed web applications using ASP.NET WebForms and ASP.NET MVC (C#)</li>
+        <li>Built modular, maintainable backend logic using C# and .NET Framework / .NET Core</li>
+        <li>Designed business workflows — forms, dashboards, and reporting systems</li>
+        <li>Created and consumed RESTful APIs for system integration</li>
+        <li>Designed relational databases and wrote optimized queries, stored procedures, and views in SQL Server</li>
+        <li>Worked with Entity Framework / ADO.NET for data access and ORM</li>
+        <li>Customized and maintained enterprise-style applications — ERP-like modules and admin panels</li>
+      </ul>
+      <div class="stack">
+        <span>C#</span><span>ASP.NET WebForms</span><span>ASP.NET MVC</span><span>.NET</span>
+        <span>SQL Server</span><span>Entity Framework</span><span>ADO.NET</span><span>REST APIs</span>
+        <span>JavaScript</span><span>HTML/CSS</span><span>Bootstrap</span><span>jQuery</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="tag">skills</span>
+      <h2>Technical skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Backend &amp; ERP</h3>
+        <div class="stack">
+          <span>C#</span><span>ASP.NET Core</span><span>ASP.NET MVC</span><span>ASP.NET WebForms</span>
+          <span>.NET</span><span>ERP Modules</span><span>Entity Framework</span><span>ADO.NET</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>APIs &amp; Integration</h3>
+        <div class="stack">
+          <span>REST APIs</span><span>API Development</span><span>API Integrations</span>
+          <span>Stripe / PayPal</span><span>Postman</span><span>JWT</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Database</h3>
+        <div class="stack">
+          <span>SQL Server</span><span>T-SQL</span><span>Stored Procedures</span>
+          <span>Indexing</span><span>SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <div class="stack">
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>jQuery</span>
+          <span>AJAX</span><span>Bootstrap</span><span>E-Commerce</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Practices</h3>
+        <div class="stack">
+          <span>Git</span><span>Clean Architecture</span><span>Layered Architecture</span>
+          <span>Back-end Operations</span><span>Go (Golang)</span><span>Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education-certs">
+    <div class="section-head">
+      <span class="tag">education</span>
+      <h2>Education &amp; certifications</h2>
+    </div>
+    <div class="grid-two">
+      <div>
+        <div class="edu-item">
+          <div class="edu-degree">Masters in Information Technology — Computer Software Engineering</div>
+          <div class="edu-school">Virtual University of Pakistan</div>
+          <div class="edu-date">2008 – 2010</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">M.Sc. Physics</div>
+          <div class="edu-school">University of Sindh</div>
+          <div class="edu-date">1998 – 1999</div>
+        </div>
+      </div>
+      <div>
+        <ul class="cert-list">
+          <li><span class="cert-name">Use AI Responsibly</span><span class="cert-meta">Google · Oct 2025</span></li>
+          <li><span class="cert-name">Discover the Art of Prompting</span><span class="cert-meta">Google · Oct 2025</span></li>
+          <li><span class="cert-name">Maximize Productivity With AI Tools</span><span class="cert-meta">Google · Oct 2025</span></li>
+          <li><span class="cert-name">Introduction to AI</span><span class="cert-meta">Google · Oct 2025</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="languages">
+    <div class="section-head">
+      <span class="tag">languages</span>
+      <h2>Languages</h2>
+    </div>
+    <ul class="lang-list" style="max-width:420px;">
+      <li><span class="lang-name">Sindhi</span><span class="lang-level">Native / bilingual</span></li>
+      <li><span class="lang-name">Urdu</span><span class="lang-level">Native / bilingual</span></li>
+      <li><span class="lang-name">English</span><span class="lang-level">Full professional</span></li>
+      <li><span class="lang-name">Arabic</span><span class="lang-level">Limited working</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Last updated: June 2026</span>
+    <span><a href="https://github.com/genbadar" target="_blank" rel="noopener">github.com/genbadar</a> · <a href="https://www.linkedin.com/in/badar-uddin-tagar-10564a52/" target="_blank" rel="noopener">LinkedIn</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
